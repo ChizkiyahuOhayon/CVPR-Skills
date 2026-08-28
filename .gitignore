@@ -1,0 +1,29 @@
+# Build output
+build/
+out/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Never commit corpus sources or drafts under audit -- they are not ours to
+# redistribute, and a manuscript must not leave the machine by accident.
+# Anchored to the repository root so references/corpus/ (the shipped summary)
+# is unaffected.
+/corpus/
+/sources/
+/papers/
+*.tex
+!templates/*.tex
+*.bib
+*.pdf

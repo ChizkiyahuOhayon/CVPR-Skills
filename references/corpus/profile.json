@@ -1,0 +1,461 @@
+{
+ "provenance": {
+  "papers": 45,
+  "figure_environments": 289,
+  "table_environments": 300,
+  "built_by": "scripts/build_profile.py using cvprskills.tex",
+  "note": "Percentiles are over papers, not over sentences. Rates are per 10,000 words of prose after floats, maths, citations and macros are removed."
+ },
+ "structure": {
+  "sections": {
+   "median": 5
+  },
+  "canonical": [
+   "Introduction",
+   "Related Work",
+   "Method",
+   "Experiments",
+   "Conclusion"
+  ],
+  "abstract_words": {
+   "median": 178.0,
+   "p25": 149,
+   "p75": 187
+  },
+  "body_words": {
+   "median": 4328,
+   "p25": 4011,
+   "p75": 4869
+  },
+  "equations": {
+   "median": 7,
+   "p75": 10
+  },
+  "cite_calls": {
+   "median": 73,
+   "p25": 51,
+   "p75": 94
+  },
+  "references": {
+   "median": 46,
+   "p25": 40,
+   "p75": 56
+  }
+ },
+ "sentences": {
+  "median_words": {
+   "median": 19,
+   "p25": 18.0,
+   "p75": 21
+  },
+  "p90_words": {
+   "median": 33
+  }
+ },
+ "voice": {
+  "first_person_per_1k": {
+   "median": 20.14,
+   "p25": 17.04,
+   "p75": 22.08
+  }
+ },
+ "figures": {
+  "per_paper": {
+   "median": 6
+  },
+  "tables_per_paper": {
+   "median": 6
+  },
+  "full_width_share": 0.422,
+  "caption_words": {
+   "median": 39,
+   "p10": 7,
+   "p90": 84
+  },
+  "table_caption_words": {
+   "median": 19.0,
+   "p90": 45
+  },
+  "single_graphic_share": 0.862,
+  "tikz_share": 0.003,
+  "booktabs_share": 0.697
+ },
+ "tells": {
+  "delve": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 4.8,
+   "papers_zero": 40,
+   "n": 45
+  },
+  "leverage": {
+   "median": 2.35,
+   "p75": 6.94,
+   "p90": 12.24,
+   "max": 30.81,
+   "papers_zero": 16,
+   "n": 45
+  },
+  "utilize": {
+   "median": 5.68,
+   "p75": 11.17,
+   "p90": 17.07,
+   "max": 30.81,
+   "papers_zero": 10,
+   "n": 45
+  },
+  "showcase": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 5.01,
+   "papers_zero": 40,
+   "n": 45
+  },
+  "underscore": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 8.22,
+   "papers_zero": 41,
+   "n": 45
+  },
+  "pivotal": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 0.0,
+   "papers_zero": 45,
+   "n": 45
+  },
+  "crucial": {
+   "median": 0.0,
+   "p75": 3.0,
+   "p90": 7.12,
+   "max": 27.78,
+   "papers_zero": 24,
+   "n": 45
+  },
+  "vital": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 3.01,
+   "papers_zero": 40,
+   "n": 45
+  },
+  "realm": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 1.27,
+   "papers_zero": 44,
+   "n": 45
+  },
+  "landscape_fig": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 0.0,
+   "papers_zero": 45,
+   "n": 45
+  },
+  "tapestry": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 0.0,
+   "papers_zero": 45,
+   "n": 45
+  },
+  "furthermore": {
+   "median": 2.12,
+   "p75": 3.29,
+   "p90": 7.19,
+   "max": 10.93,
+   "papers_zero": 17,
+   "n": 45
+  },
+  "moreover": {
+   "median": 2.5,
+   "p75": 5.64,
+   "p90": 9.95,
+   "max": 16.78,
+   "papers_zero": 14,
+   "n": 45
+  },
+  "additionally": {
+   "median": 0.0,
+   "p75": 2.5,
+   "p90": 5.38,
+   "max": 14.21,
+   "papers_zero": 27,
+   "n": 45
+  },
+  "notably": {
+   "median": 0.0,
+   "p75": 1.1,
+   "p90": 4.31,
+   "max": 20.53,
+   "papers_zero": 33,
+   "n": 45
+  },
+  "importantly": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 2.73,
+   "papers_zero": 42,
+   "n": 45
+  },
+  "comprehensive": {
+   "median": 2.4,
+   "p75": 4.99,
+   "p90": 7.28,
+   "max": 19.89,
+   "papers_zero": 14,
+   "n": 45
+  },
+  "robust": {
+   "median": 2.44,
+   "p75": 7.51,
+   "p90": 16.35,
+   "max": 31.2,
+   "papers_zero": 19,
+   "n": 45
+  },
+  "seamless": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 2.51,
+   "papers_zero": 42,
+   "n": 45
+  },
+  "cutting_edge": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 2.73,
+   "papers_zero": 44,
+   "n": 45
+  },
+  "state_of_the_art": {
+   "median": 6.43,
+   "p75": 11.87,
+   "p90": 14.21,
+   "max": 21.64,
+   "papers_zero": 5,
+   "n": 45
+  },
+  "novel": {
+   "median": 1.93,
+   "p75": 5.47,
+   "p90": 9.5,
+   "max": 21.0,
+   "papers_zero": 21,
+   "n": 45
+  },
+  "innovative": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 4.11,
+   "papers_zero": 43,
+   "n": 45
+  },
+  "paradigm": {
+   "median": 1.5,
+   "p75": 4.85,
+   "p90": 7.23,
+   "max": 27.12,
+   "papers_zero": 20,
+   "n": 45
+  },
+  "holistic": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 5.78,
+   "papers_zero": 40,
+   "n": 45
+  },
+  "nuanced": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 1.27,
+   "papers_zero": 44,
+   "n": 45
+  },
+  "intricate": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 10.25,
+   "papers_zero": 42,
+   "n": 45
+  },
+  "meticulous": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 1.1,
+   "papers_zero": 44,
+   "n": 45
+  },
+  "significantly": {
+   "median": 2.57,
+   "p75": 6.86,
+   "p90": 10.01,
+   "max": 19.26,
+   "papers_zero": 10,
+   "n": 45
+  },
+  "substantially": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 4.75,
+   "papers_zero": 41,
+   "n": 45
+  },
+  "remarkably": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 4.7,
+   "papers_zero": 42,
+   "n": 45
+  },
+  "in_conclusion": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 2.5,
+   "papers_zero": 41,
+   "n": 45
+  },
+  "it_is_worth_noting": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 7.23,
+   "papers_zero": 41,
+   "n": 45
+  },
+  "plays_a_role": {
+   "median": 0.0,
+   "p75": 1.75,
+   "p90": 2.82,
+   "max": 6.16,
+   "papers_zero": 31,
+   "n": 45
+  },
+  "aims_to": {
+   "median": 2.16,
+   "p75": 4.2,
+   "p90": 6.17,
+   "max": 21.44,
+   "papers_zero": 18,
+   "n": 45
+  },
+  "enables": {
+   "median": 2.37,
+   "p75": 10.02,
+   "p90": 12.47,
+   "max": 30.66,
+   "papers_zero": 12,
+   "n": 45
+  },
+  "facilitate": {
+   "median": 0.0,
+   "p75": 4.09,
+   "p90": 5.47,
+   "max": 10.25,
+   "papers_zero": 23,
+   "n": 45
+  },
+  "emdash": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 6.12,
+   "papers_zero": 43,
+   "n": 45
+  },
+  "not_only_but_also": {
+   "median": 0.0,
+   "p75": 2.31,
+   "p90": 4.11,
+   "max": 6.13,
+   "papers_zero": 30,
+   "n": 45
+  },
+  "by_ing": {
+   "median": 36.58,
+   "p75": 59.5,
+   "p90": 81.97,
+   "max": 105.62,
+   "papers_zero": 0,
+   "n": 45
+  },
+  "we_propose": {
+   "median": 10.49,
+   "p75": 15.0,
+   "p90": 19.2,
+   "max": 33.67,
+   "papers_zero": 1,
+   "n": 45
+  },
+  "we_introduce": {
+   "median": 4.11,
+   "p75": 7.28,
+   "p90": 10.01,
+   "max": 16.4,
+   "papers_zero": 11,
+   "n": 45
+  },
+  "extensive_experiments": {
+   "median": 2.14,
+   "p75": 4.85,
+   "p90": 6.84,
+   "max": 9.6,
+   "papers_zero": 21,
+   "n": 45
+  },
+  "to_the_best_of": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 2.37,
+   "max": 4.15,
+   "papers_zero": 37,
+   "n": 45
+  },
+  "first_time": {
+   "median": 0.0,
+   "p75": 0.0,
+   "p90": 0.0,
+   "max": 2.43,
+   "papers_zero": 40,
+   "n": 45
+  },
+  "hedge": {
+   "median": 9.63,
+   "p75": 19.38,
+   "p90": 24.04,
+   "max": 68.45,
+   "papers_zero": 1,
+   "n": 45
+  },
+  "rule_of_three": {
+   "median": 9.75,
+   "p75": 14.0,
+   "p90": 17.05,
+   "max": 23.98,
+   "papers_zero": 3,
+   "n": 45
+  }
+ }
+}

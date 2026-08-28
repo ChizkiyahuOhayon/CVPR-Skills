@@ -1,0 +1,94 @@
+name: cvpr-skills
+version: 1.0.0
+description: >
+  Declarative manifest for the static/dynamic split. SKILL.md and AGENTS.md use
+  this to decide which fragment to load for a given request. The main axis is
+  the paper-production stage; the measured corpus material stays in on-demand
+  references.
+
+corpus:
+  papers: 46
+  papers_with_prose: 45
+  groups: [Tsinghua MARS, Wenzhao Zheng group, Megvii]
+  figure_environments: 289
+  table_environments: 300
+  profile: references/corpus/profile.json
+  rebuild: scripts/build_profile.py
+  note: |
+    The sources are other people's papers and are not redistributed. What ships
+    is the summary and the method that produced it. profile.json and the
+    auditor are produced by the same reader (scripts/cvprskills/tex.py), so a
+    draft is always compared against a like-for-like measurement.
+
+engine:
+  auditor: scripts/audit_paper.py
+  profile_builder: scripts/build_profile.py
+  package: scripts/cvprskills
+  runtime: python>=3.8, standard library only
+  external:
+    - name: academic-refchecker
+      install: pip install academic-refchecker[llm]
+      used_by: references/audit/citation-audit.md
+      optional: true
+      on_missing: report the bibliography as unaudited, do not skip silently
+
+calibration:
+  method: |
+    The auditor was run over all 45 corpus papers and over a deliberately
+    AI-written draft of comparable length.
+  errors_on_published_papers: 0
+  warnings_per_published_paper: 4.8
+  errors_on_ai_draft: 11
+  rate_floor_words: 900   # below this, frequency checks are suppressed
+
+axes:
+  stage:
+    detect: |
+      Route by what the user asks to receive, not by what might be useful next.
+      "Make this better" -> write. "What is wrong with this" -> review, and
+      review does not rewrite. Boxes and arrows -> the cvpr-figure skill.
+      Anything with an axis -> matplotlib.
+    values:
+      idea:        references/craft/idea-shaping.md
+      novelty:     references/audit/novelty.md
+      experiments: references/corpus/experiment-design.md
+      write:       references/corpus/writing-style.md
+      audit:       references/audit/integrity.md
+      citations:   references/audit/citation-audit.md
+      review:      references/audit/reviewer-simulation.md
+      rebuttal:    references/craft/rebuttal.md
+      submit:      references/audit/submission.md
+    multi: false
+
+references:
+  on_demand:
+    - condition: the request spans more than one stage, or two stages could claim it
+      path: references/workflow/routing.md
+    - condition: paper structure, page budget, float counts, caption length
+      path: references/corpus/venue-conventions.md
+    - condition: drafting or revising prose; setting sentence, voice or hedging targets
+      path: references/corpus/writing-style.md
+    - condition: about to remove a word because it sounds AI-generated
+      path: references/craft/humanizing.md
+    - condition: the draft hedges, apologises, or over-qualifies
+      path: references/craft/anti-defensive.md
+    - condition: planning an evaluation, or judging whether one is complete
+      path: references/corpus/experiment-design.md
+    - condition: deciding what ships with the code, or reading a repo to draw its architecture
+      path: references/corpus/code-and-release.md
+    - condition: the user asks where a number came from
+      path: references/corpus/README.md
+
+companion_skills:
+  - name: cvpr-figure
+    owns: framework, pipeline, teaser and module figures; Visio/PowerPoint export
+    shares: the same 46-paper corpus; its references/corpus-report.md is the visual evidence
+    handoff: draw figures before writing the method section
+
+quality_gate:
+  command: python3 scripts/audit_paper.py <paper dir or main.tex>
+  blocking: |
+    Every error must be fixed. Every warning must be fixed or explicitly
+    justified to the author, with the corpus range quoted. The auditor does not
+    read numbers, check claims against evidence, or judge whether the science is
+    right -- those are the human passes in references/audit/integrity.md.

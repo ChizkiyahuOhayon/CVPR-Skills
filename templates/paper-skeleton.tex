@@ -1,0 +1,94 @@
+% A CVPR-class paper skeleton, proportioned from the corpus.
+%
+% The comments are word budgets, not suggestions: they are the interquartile
+% range of 45 published papers. Delete them as you fill each section in.
+%
+% Check yourself against the corpus at any point:
+%   python3 scripts/audit_paper.py .
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{cvpr}              % or: aaai, neurips, iclr, llncs
+\usepackage{graphicx}
+\usepackage{booktabs}          % 70% of corpus tables use these rules
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+\title{A title that names the mechanism, not the outcome}
+\maketitle
+
+% ---------------------------------------------------------------- abstract
+% Corpus: 149-187 words, 9 sentences. Structure that recurs:
+%   1-2  the setting, and the specific failure
+%   3    the insight, in one sentence
+%   4-6  what we build
+%   7-8  the headline numbers, on two benchmarks
+%   9    what it means
+\begin{abstract}
+\end{abstract}
+
+% ------------------------------------------------------------ introduction
+% ~900 words, five paragraphs:
+%   1  the problem, in the world
+%   2  what prior work does and where it breaks -- one paragraph, not three
+%   3  the insight, and the figure that shows it (Fig. 1 goes here)
+%   4  the method in five sentences
+%   5  contributions -- three, each one checkable against a table
+\section{Introduction}
+
+% The teaser sits 6.9% into the paper, in 41 of 46 cases as a single graphic,
+% single column. Its caption runs ~49 words and states the claim.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/teaser.pdf}
+  \caption{}
+  \label{fig:teaser}
+\end{figure}
+
+% ------------------------------------------------------------ related work
+% ~700 words. Group by approach, not by year. End each group with the
+% sentence that says what it cannot do -- that sentence is what your method
+% is measured against, so make it one you can actually beat.
+\section{Related Work}
+
+% ------------------------------------------------------------------ method
+% ~1400 words, the largest section. Corpus median is 8 equations and 0
+% algorithm environments: the maths and one figure carry the method.
+% Name this section after your method if it has a name.
+\section{Method}
+\subsection{Preliminaries}
+\subsection{}
+\subsection{}
+
+% ------------------------------------------------------------- experiments
+% ~1300 words. Order that recurs across the corpus:
+%   setup -> implementation details -> main comparison -> ablation
+%   -> design study -> cost -> qualitative
+% 43 of 46 papers run an ablation. Two benchmarks, not one.
+\section{Experiments}
+\subsection{Setup}
+\subsection{Implementation Details}
+\subsection{Comparison with State-of-the-Art}
+
+% Table caption: ~19 words. Say what is being compared and at what setting.
+\begin{table}[t]
+  \centering
+  \caption{}
+  \label{tab:main}
+  \begin{tabular}{lcc}
+    \toprule
+    Method & Metric $\uparrow$ & Cost $\downarrow$ \\
+    \midrule
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Ablation Study}
+\subsection{Analysis}
+
+% ------------------------------------------------------------- conclusion
+% ~150 words. What was shown, and the one direction it opens. Not a summary
+% of the paper -- the reader just read it.
+\section{Conclusion}
+
+{\small\bibliographystyle{ieee_fullname}\bibliography{refs}}
+\end{document}
