@@ -9,11 +9,13 @@ is not permission to run several stages at once.
 |---|---|---|
 | a research direction turned into one defensible idea | **idea** | `references/craft/idea-shaping.md` |
 | to know whether the idea is already taken | **novelty** | `references/audit/novelty.md` |
+| how to structure the implementation | **code** | `references/craft/code.md` |
 | an experiment plan, benchmark and ablation design | **experiments** | `references/corpus/experiment-design.md` |
 | a figure — framework, pipeline, teaser, module | **figure** | the CVPR-Figure skill, not this one |
 | a plot — bars, curves, heatmaps, scatter | **plot** | matplotlib; `nature-figure` if installed |
 | prose drafted, restructured, polished, compressed | **write** | `references/corpus/writing-style.md`, `references/craft/anti-defensive.md` |
 | an assessment, score or reviewer report, without rewriting | **review** | `references/audit/reviewer-simulation.md` |
+| how many references, how recent, what to cite where | **bibliography** | `references/corpus/bibliography.md` |
 | citations verified against reality | **citations** | `references/audit/citation-audit.md` |
 | numbers and claims checked against each other | **integrity** | `references/audit/integrity.md` |
 | venue format, anonymity, page limit, checklist | **submission** | `references/audit/submission.md` |
@@ -40,11 +42,14 @@ frequencies, not with a generic word list.
 ## Default order for a paper
 
 ```
-idea -> novelty -> experiments -> (run the work) -> figure -> write
+idea -> novelty -> code -> experiments -> (run the work) -> figure -> write
      -> integrity -> citations -> review -> submission
 ```
 
-Two things about this order. **Figures before prose**, because a framework
+Three things about this order. **Code before experiments**, because the
+ablation is a code-structure decision: if each contribution is not behind a
+flag from the start, the ablation table becomes four half-broken branches a
+week before the deadline. **Figures before prose**, because a framework
 figure forces the method to be factored before it is described, and because
 writing the method section against a finished figure is much faster than the
 reverse. And **review before submission**, because a format check on a draft

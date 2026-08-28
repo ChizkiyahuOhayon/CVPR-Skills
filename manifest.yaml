@@ -51,9 +51,11 @@ axes:
     values:
       idea:        references/craft/idea-shaping.md
       novelty:     references/audit/novelty.md
+      code:        references/craft/code.md
       experiments: references/corpus/experiment-design.md
       write:       references/corpus/writing-style.md
       audit:       references/audit/integrity.md
+      bibliography: references/corpus/bibliography.md
       citations:   references/audit/citation-audit.md
       review:      references/audit/reviewer-simulation.md
       rebuttal:    references/craft/rebuttal.md
@@ -76,6 +78,10 @@ references:
       path: references/corpus/experiment-design.md
     - condition: deciding what ships with the code, or reading a repo to draw its architecture
       path: references/corpus/code-and-release.md
+    - condition: structuring the implementation, naming modules, making the ablation runnable
+      path: references/craft/code.md
+    - condition: how many references, how recent they should be, what to cite where
+      path: references/corpus/bibliography.md
     - condition: the user asks where a number came from
       path: references/corpus/README.md
 

@@ -14,6 +14,7 @@ the shipped profile.json is the summary they produced.
 """
 
 import argparse
+import collections
 import json
 import os
 import re
@@ -128,6 +129,9 @@ def main(argv=None):
             "tikz_share": round(sum(1 for f in figs if f["tikz"]) / max(len(figs), 1), 3),
             "booktabs_share": round(sum(1 for t in tabs if t["booktabs"]) / max(len(tabs), 1), 3),
         },
+        "placement": _placement(papers),
+        "bibliography": _bibliography(a.sources, papers),
+        "rigour": _rigour(papers),
         "tells": {k: {"median": round(st.median(v), 2),
                       "p75": round(q(v, .75), 2),
                       "p90": round(q(v, .90), 2),
@@ -141,6 +145,86 @@ def main(argv=None):
     print("wrote %s from %d papers, %d figures, %d tables"
           % (a.out, len(papers), len(figs), len(tabs)))
     return 0
+
+
+def _placement(papers):
+    """Which section each float lives in -- where the evidence actually sits."""
+    figs, tabs = collections.Counter(), collections.Counter()
+    appendix = 0
+    for _, p, _ in papers:
+        for f in p.figures:
+            figs[f["section"]] += 1
+        for t in p.tables:
+            tabs[t["section"]] += 1
+        if re.search(r"\\appendix|\\section\*?\{\s*(Appendix|Supplement)", p.doc, re.I):
+            appendix += 1
+    tf, tt = max(sum(figs.values()), 1), max(sum(tabs.values()), 1)
+    return {
+        "figures_by_section": {k: round(v / tf, 3) for k, v in figs.most_common(8)},
+        "tables_by_section": {k: round(v / tt, 3) for k, v in tabs.most_common(8)},
+        "papers_with_appendix": round(appendix / max(len(papers), 1), 3),
+    }
+
+
+def _bibliography(root, papers):
+    """Reference years, absolute and relative to each paper's newest citation."""
+    all_years, rel = [], []
+    n = 0
+    for name, _p, _w in papers:
+        d = os.path.join(root, name)
+        ys = []
+        for base, _dirs, names in os.walk(d):
+            for fn in names:
+                if not fn.endswith((".bib", ".bbl")):
+                    continue
+                with open(os.path.join(base, fn), encoding="utf-8",
+                          errors="ignore") as fh:
+                    t = fh.read()
+                ys += [int(y) for y in re.findall(
+                    r'(?:year\s*=\s*[{"\s]*|\(|\s)((?:19|20)\d{2})[},")\s.]', t)]
+        ys = [y for y in ys if 1980 <= y <= 2030]
+        if len(ys) < 10:
+            continue
+        n += 1
+        all_years += ys
+        newest = max(ys)
+        rel += [newest - y for y in ys]
+    if not all_years:
+        return {}
+    all_years.sort()
+    rel.sort()
+    c = collections.Counter(all_years)
+    tot = float(len(all_years))
+    return {
+        "papers": n,
+        "year_median": st.median(all_years),
+        "year_p10": all_years[len(all_years) // 10],
+        "year_p90": all_years[9 * len(all_years) // 10],
+        "share_older_than_10y": round(
+            sum(v for k, v in c.items() if max(all_years) - k > 10) / tot, 3),
+        "age_vs_newest_median": st.median(rel),
+        "age_vs_newest_p75": rel[3 * len(rel) // 4],
+        "share_within_3y_of_newest": round(
+            sum(1 for r in rel if r <= 3) / float(len(rel)), 3),
+    }
+
+
+def _rigour(papers):
+    """How much statistics this literature actually reports."""
+    pats = {
+        "significance_test": r"p\s*[<=]\s*0?\.0|p-value|statistically significant"
+                             r"|t-test|wilcoxon|mann-whitney|anova|bonferroni",
+        "error_bars": r"\\pm|\u00b1|standard deviation|std\.|error bar"
+                      r"|confidence interval",
+        "multiple_seeds": r"\b(three|five|3|5|10)\s+(random\s+)?seeds"
+                          r"|averaged over .{0,20}runs|multiple runs",
+        "ablation": r"\bablation",
+    }
+    out = {}
+    for k, rx in pats.items():
+        out[k] = round(sum(1 for _, p, _ in papers
+                           if re.search(rx, p.raw, re.I)) / max(len(papers), 1), 3)
+    return out
 
 
 if __name__ == "__main__":

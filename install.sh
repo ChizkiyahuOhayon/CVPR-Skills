@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Install CVPR-skills as a Claude Code skill.
+# Install CVPR-Skills as a Claude Code skill.
 #
 #   ./install.sh              -> ~/.claude/skills/cvpr-skills
 #   ./install.sh /some/where  -> /some/where/cvpr-skills
 #
 # The skill id is lowercase-kebab because Claude Code requires it; the project
-# is CVPR-skills.
+# is CVPR-Skills.
 set -euo pipefail
 
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,7 +13,7 @@ DEST_ROOT="${1:-$HOME/.claude/skills}"
 DEST="$DEST_ROOT/cvpr-skills"
 
 if ! command -v python3 >/dev/null 2>&1; then
-  echo "python3 not found; CVPR-skills needs Python 3.8+" >&2
+  echo "python3 not found; CVPR-Skills needs Python 3.8+" >&2
   exit 1
 fi
 

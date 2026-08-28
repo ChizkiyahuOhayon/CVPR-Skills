@@ -181,6 +181,13 @@ def audit(paper, profile=None):
     """Compare a parsed Paper against the corpus profile."""
     P = profile or load_profile()
     rep = Report()
+    from_pdf = getattr(paper, "source_kind", "tex") == "pdf"
+    if from_pdf:
+        rep.note("pdf-source",
+                 "read from a compiled PDF, so caption lengths, float "
+                 "placement, equation counts and booktabs use are not "
+                 "measurable and are not reported. Point this at the .tex for "
+                 "the full audit.")
     body = paper.body
     words = len(body.split())
     if words < 300:
@@ -291,7 +298,8 @@ def audit(paper, profile=None):
                  % (nf, F["per_paper"]["median"]))
     if nf > 12:
         rep.note("many-figures", "%d figures; corpus median is %d" % (nf, F["per_paper"]["median"]))
-    caps = [f["caption_words"] for f in paper.figures if f["caption_words"]]
+    if from_pdf:
+        return rep, _stats(paper, words, sents, fp, hedge_rate)
     for f in paper.figures:
         if f["caption_words"] and f["caption_words"] < 8:
             rep.warn("thin-caption",
@@ -316,14 +324,21 @@ def audit(paper, profile=None):
                      "table %s caption is %d words; corpus median is %d"
                      % (t["label"] or "?", t["caption_words"],
                         F["table_caption_words"]["median"]))
-    return rep, {
+    return rep, _stats(paper, words, sents, fp, hedge_rate)
+
+
+def _stats(paper, words, sents, fp, hedge_rate):
+    return {
         "words": words, "sentences": len(sents),
         "abstract_words": len(paper.abstract.split()),
-        "sections": tops, "figures": nf, "tables": nt,
+        "sections": [s for s in paper.top_sections
+                     if s not in ("Acknowledgements", "Appendix", "References")],
+        "figures": len(paper.figures), "tables": len(paper.tables),
         "equations": paper.equations, "cites": paper.cites,
         "references": getattr(paper, "references", paper.cites),
         "first_person_per_1k": round(fp, 1),
         "hedges_per_10k": round(hedge_rate, 1),
         "median_sentence_words": (sorted(len(s.split()) for s in sents)[len(sents) // 2]
                                   if sents else 0),
+        "source_kind": getattr(paper, "source_kind", "tex"),
     }

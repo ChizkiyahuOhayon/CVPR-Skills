@@ -80,6 +80,45 @@
   "tikz_share": 0.003,
   "booktabs_share": 0.697
  },
+ "placement": {
+  "figures_by_section": {
+   "Experiments": 0.318,
+   "Introduction": 0.156,
+   "Method": 0.152,
+   "Related Work": 0.066,
+   "Approach": 0.066,
+   "Results": 0.028,
+   "Appendix": 0.024,
+   "Algorithm": 0.014
+  },
+  "tables_by_section": {
+   "Experiments": 0.693,
+   "Method": 0.087,
+   "Approach": 0.057,
+   "Appendix": 0.023,
+   "Ablation": 0.02,
+   "Scaling for Generality with MoE": 0.017,
+   "Design Choices of AutoAssign": 0.013,
+   "Sensitivity Analysis": 0.013
+  },
+  "papers_with_appendix": 0.311
+ },
+ "bibliography": {
+  "papers": 45,
+  "year_median": 2019.0,
+  "year_p10": 2013,
+  "year_p90": 2023,
+  "share_older_than_10y": 0.164,
+  "age_vs_newest_median": 3.0,
+  "age_vs_newest_p75": 5,
+  "share_within_3y_of_newest": 0.588
+ },
+ "rigour": {
+  "significance_test": 0.0,
+  "error_bars": 0.111,
+  "multiple_seeds": 0.0,
+  "ablation": 0.956
+ },
  "tells": {
   "delve": {
    "median": 0.0,

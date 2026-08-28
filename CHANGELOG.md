@@ -33,6 +33,38 @@ trailing ", …ing" clause (**45 of 45**) are all normal here — removing them
 makes a draft read less like the venue. What is genuinely absent: `pivotal`
 (0 of 45), "the landscape of" (0), `tapestry` (0), and the em dash (2 of 45).
 
+### Measured for this release, on top of prose
+
+- **Where the evidence sits.** Tables are 69% an Experiments-section object;
+  figures spread across Experiments (32%), Introduction (16%) and Method (15%).
+  The first ablation table sits about 60% through a paper's tables.
+- **How much statistics.** 0 of 46 papers report a significance test, 0 mention
+  multiple seeds, 11% report any variance — against 96% that run an ablation.
+  `experiment-design.md` now states this as a ceiling: do not build an
+  apparatus the venue does not use. An earlier draft of that file advised
+  reporting error bars as "cheap and disarming"; the measurement says the
+  literature does not, and the advice was corrected.
+- **The bibliography.** 6,726 dated entries: median year 2019, and **59% of
+  references sit within three years of the paper's own newest citation**. Only
+  16% are more than a decade old. New file `corpus/bibliography.md`.
+- **The appendix.** Only 15 of 46 papers have one. It holds more of what is
+  already in the paper — qualitative results (73%), extra comparisons (73%),
+  implementation detail (53%) — not a different kind of argument.
+- New stage: **code** (`craft/code.md`). Config-driven vs class-driven, naming
+  modules for the paper rather than the codebase, and putting every
+  contribution behind a flag so the ablation is a sweep rather than four
+  branches.
+
+### PDF input
+
+`cvprskills/pdf.py` reads a compiled paper when no `.tex` is available. Section
+headings are found by **font-size tier** rather than text pattern — ICLR sets
+them in small caps at 9.6 pt against a 10 pt body, so "larger than body" finds
+nothing — with a requirement that a heading tier span at least two pages, which
+is what separates it from a five-line title block. Checks that a PDF cannot
+support (caption length, float placement, equation counts, booktabs) are
+suppressed and reported as suppressed rather than guessed at.
+
 ### Also in this release
 
 - `scripts/cvprskills/tex.py` — a LaTeX reader that strips comments, splices

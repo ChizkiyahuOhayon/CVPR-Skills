@@ -57,13 +57,18 @@ def main(argv=None):
         return 1 if rep.counts()["error"] else 0
 
     tty = sys.stdout.isatty()
-    print("%s  (%s)" % (paper.path, paper.cls or "unknown class"))
+    kind = "compiled PDF" if stats.get("source_kind") == "pdf" else (paper.cls or "unknown class")
+    print("%s  (%s)" % (paper.path, kind))
     print("  %d words | %d sentences (median %d words) | abstract %d words"
           % (stats["words"], stats["sentences"],
              stats["median_sentence_words"], stats["abstract_words"]))
-    print("  %d figures | %d tables | %d equations | %d references (%d \\cite calls)"
-          % (stats["figures"], stats["tables"], stats["equations"],
-             stats["references"], stats["cites"]))
+    if stats.get("source_kind") == "pdf":
+        print("  %d figures | %d tables | %d references"
+              % (stats["figures"], stats["tables"], stats["references"]))
+    else:
+        print("  %d figures | %d tables | %d equations | %d references (%d \\cite calls)"
+              % (stats["figures"], stats["tables"], stats["equations"],
+                 stats["references"], stats["cites"]))
     print("  first person %.1f/1k words | hedges %.1f/10k words"
           % (stats["first_person_per_1k"], stats["hedges_per_10k"]))
     print("  sections: %s" % " > ".join(stats["sections"]))
@@ -86,7 +91,7 @@ def main(argv=None):
     stub = any(r.code == "too-short" for r in rep.rows)
     if stub:
         print("Too little prose to judge; most findings above are about length.")
-    elif c["error"] == 0 and c["warn"] <= 6:
+    elif c["error"] == 0 and c["warn"] <= 2:
         print("Within the corpus distribution on every measured axis that matters.")
     return 1 if c["error"] else 0
 

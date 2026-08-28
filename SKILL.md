@@ -15,7 +15,7 @@ description: >-
   belong in matplotlib.
 ---
 
-# CVPR-skills — router
+# CVPR-Skills — router
 
 A paper-production suite whose advice has numbers behind it. The numbers come
 from the LaTeX sources of 46 papers by Tsinghua MARS, Wenzhao Zheng's group and
@@ -33,11 +33,13 @@ request spans stages. Otherwise go straight to the row:
 |---|---|
 | a direction turned into one defensible idea | §1 idea |
 | to know whether it is already done | §2 novelty |
+| how to structure the implementation | §2b code |
 | an evaluation plan | §3 experiments |
 | a framework / pipeline / teaser figure | **the `cvpr-figure` skill** |
 | a bar chart, curve, heatmap, scatter | **matplotlib** — not this skill |
 | prose drafted, restructured or polished | §4 write |
 | a manuscript measured and diagnosed | §5 audit |
+| how many references, how recent | §3b bibliography |
 | citations verified | §6 citations |
 | a reviewer report | §7 review |
 | a rebuttal | §8 rebuttal |
@@ -62,15 +64,49 @@ mechanism, not the topic; include rejected OpenReview submissions; read the
 papers citing your nearest neighbour. Report as scooped / adjacent / clear,
 with the three-column table for the nearest three papers.
 
+## 2b. Code
+
+Load [`references/craft/code.md`](references/craft/code.md).
+
+Two shapes only — config-driven (mmengine) or class-driven — decided before the
+training loop. Name modules for the **paper**, not the codebase, from day one.
+Put every contribution behind a flag so the ablation is a config sweep rather
+than four branches.
+
 ## 3. Experiments
 
 Load [`references/corpus/experiment-design.md`](references/corpus/experiment-design.md).
 
 Two benchmarks, an ablation that removes one component at a time and lands on
-the baseline, and a cost table if any claim mentions efficiency. 43 of 46
+the baseline, and a cost table if any claim mentions efficiency. 44 of 46
 corpus papers run an ablation; it is not optional.
 
+**Do not over-build the statistics.** Measured across the corpus: **0 of 46
+papers report a significance test**, 0 mention multiple seeds, and 11% report
+any variance at all. A bootstrap-CI appendix will not be rewarded; another
+ablation row will. The one exception is a headline gain under about a point,
+where two or three seeds and a single sentence about the spread closes the
+"is this noise" comment.
+
+Tables live in Experiments (69% of them). Figures spread out: 32% Experiments,
+16% Introduction, 15% Method. The first ablation table sits about 60% through
+the paper's tables.
+
+An appendix is optional — only 15 of 46 papers have one — and it holds *more of
+what is already there*: qualitative results (73%), extra comparisons (73%),
+implementation detail (53%). A result that exists only in the appendix will not
+be read.
+
 Never invent results. Design the table and leave the cells empty.
+
+## 3b. Bibliography
+
+Load [`references/corpus/bibliography.md`](references/corpus/bibliography.md).
+
+**46 distinct references** (p25 40, p75 56), and **59% of them within three
+years** of the newest thing cited. Only 16% are more than a decade old. A
+related-work section whose newest citation is two years stale reads as a
+project that stalled.
 
 ## 4. Write
 

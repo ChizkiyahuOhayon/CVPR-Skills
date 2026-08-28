@@ -138,6 +138,8 @@ def normalise_section(title):
 class Paper(object):
     """A parsed manuscript."""
 
+    source_kind = "tex"
+
     def __init__(self, path, text):
         self.path = path
         self.raw = text
@@ -212,8 +214,21 @@ class Paper(object):
 
 
 def load(paths):
-    path, text = find_main(paths if isinstance(paths, (list, tuple)) else [paths])
+    """Load a manuscript from .tex sources, a directory, or a compiled PDF."""
+    seq = paths if isinstance(paths, (list, tuple)) else [paths]
+    pdfs = [p for p in seq if p.lower().endswith(".pdf")]
+    if pdfs and not any(p.lower().endswith(".tex") or os.path.isdir(p) for p in seq):
+        from . import pdf as pdfmod
+        return pdfmod.load(pdfs[0])
+    path, text = find_main(seq)
     if path is None:
+        # A directory with no .tex but a PDF in it is still readable.
+        for p in seq:
+            if os.path.isdir(p):
+                found = sorted(f for f in os.listdir(p) if f.lower().endswith(".pdf"))
+                if found:
+                    from . import pdf as pdfmod
+                    return pdfmod.load(os.path.join(p, found[0]))
         return None
     text = inline_inputs(path, strip_comments(text))
     return Paper(path, text)
