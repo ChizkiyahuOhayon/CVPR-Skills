@@ -32,6 +32,13 @@
 
 ---
 
+## New: Find Your Supervisor · researcher-to-mentor Skill
+
+A general-purpose research apprenticeship workflow: study a researcher's **public papers, code, and research genealogy** with explicit evidence levels; independently challenge ideas; design compute-aware pilots and audit paper claims. This public skill **contains no private researcher profiles, personal supervisor dossiers, or unpublished student work**.
+
+→ [Find Your Supervisor](skills/find-your-supervisor/README.md) · [SKILL.md](skills/find-your-supervisor/SKILL.md)
+
+
 ## What this is
 
 A skill suite that walks a paper from **"I have a direction"** to **"submitted"**,

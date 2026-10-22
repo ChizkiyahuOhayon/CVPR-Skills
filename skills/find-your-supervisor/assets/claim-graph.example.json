@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.2.0",
+  "project": "Synthetic example only — no paper claims or experimental results",
+  "claims": [
+    {
+      "id": "c1",
+      "statement": "Hypothesis: a lightweight calibrated feature gate improves recognition under synthetic corruption at matched compute",
+      "status": "hypothesis",
+      "source_ids": ["s1"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "kind": "other",
+      "url": "https://example.org/synthetic-protocol",
+      "version": "hypothetical design, not a retrieved source"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "e1",
+      "claim_ids": ["c1"],
+      "protocol": "Same backbone, training steps, data split, parameters and VRAM; compare gate against identity and equal-parameter MLP on increasing corruption",
+      "negative_control": "Randomized gate weights",
+      "status": "planned"
+    }
+  ],
+  "figures": [
+    {
+      "id": "f1",
+      "claim_ids": ["c1"],
+      "experiment_ids": ["e1"],
+      "purpose": "Planned accuracy-vs-corruption severity curve; no values yet"
+    }
+  ]
+}

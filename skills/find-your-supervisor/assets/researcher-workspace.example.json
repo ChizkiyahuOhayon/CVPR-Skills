@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1.0",
+  "researcher": {
+    "name": "REPLACE WITH RESEARCHER NAME",
+    "slug": "example-researcher",
+    "affiliation": "",
+    "identifiers": {},
+    "homepage": "",
+    "identity_confirmed": false,
+    "scope": "all-public-research",
+    "discovery_checked_at": "",
+    "sources_checked": [],
+    "identity_notes": "Example contains NO verified papers."
+  },
+  "papers": [],
+  "repositories": [],
+  "runs": [],
+  "exclusions": [],
+  "open_questions": []
+}

@@ -1,0 +1,27 @@
+name: find-your-supervisor tests
+on:
+  push:
+    paths:
+      - 'skills/find-your-supervisor/**'
+      - '.github/workflows/find-your-supervisor.yml'
+  pull_request:
+    paths:
+      - 'skills/find-your-supervisor/**'
+      - '.github/workflows/find-your-supervisor.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline lint and evidence tests
+        working-directory: skills/find-your-supervisor
+        run: |
+          python scripts/check_skill.py
+          python scripts/audit.py validate assets/researcher-workspace.example.json
+          python scripts/claim_graph.py validate assets/claim-graph.example.json
+          python -m unittest discover -s tests -v
